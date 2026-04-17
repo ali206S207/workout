@@ -212,6 +212,43 @@ nav{
 .stat-label{color:var(--gray);font-size:11px;margin-top:2px;}
 
 /* Social / Contact footer in home */
+/* ===== BEFORE/AFTER ===== */
+.ba-section{background:var(--dark2);padding:32px 16px;border-top:1px solid rgba(255,215,0,0.08);}
+.ba-header{text-align:center;margin-bottom:24px;}
+.ba-title{font-family:'Bebas Neue';font-size:34px;color:var(--gold);letter-spacing:3px;}
+.ba-sub{color:var(--gray);font-size:13px;margin-top:4px;}
+.ba-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+  gap:16px;max-width:900px;margin:0 auto;
+}
+.ba-card{
+  background:var(--dark3);border:1px solid #222;border-radius:14px;
+  overflow:hidden;transition:border-color 0.3s,transform 0.3s;
+}
+.ba-card:hover{border-color:rgba(255,215,0,0.3);transform:translateY(-3px);}
+.ba-img-wrap{width:100%;aspect-ratio:3/4;overflow:hidden;position:relative;}
+.ba-img-wrap img{width:100%;height:100%;object-fit:cover;}
+.ba-placeholder{
+  width:100%;height:100%;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  background:linear-gradient(135deg,#111,#1a1a1a);gap:8px;
+}
+.ba-placeholder-icon{font-size:40px;opacity:0.4;}
+.ba-placeholder-txt{color:#555;font-size:14px;font-weight:700;}
+.ba-placeholder-sub{
+  color:var(--gold);font-size:11px;letter-spacing:2px;
+  background:rgba(255,215,0,0.1);padding:3px 10px;border-radius:10px;
+  border:1px solid rgba(255,215,0,0.2);
+}
+.ba-info{padding:14px 16px;}
+.ba-name{font-weight:700;color:white;font-size:14px;}
+.ba-duration{color:var(--gray);font-size:12px;margin-top:3px;}
+
+@media(max-width:600px){
+  .ba-grid{grid-template-columns:repeat(2,1fr);gap:10px;}
+  .ba-title{font-size:28px;}
+}
+
 .home-contact{
   background:var(--dark3);padding:20px;
   display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;
@@ -568,6 +605,8 @@ nav{
     <button class="nav-tab" onclick="showPage('streak',this)">🔥 التتبع</button>
     <button class="nav-tab" onclick="showPage('packages',this)">👑 الباقات</button>
     <button class="nav-tab" onclick="showPage('calories',this)">⚡ السعرات</button>
+    <button class="nav-tab" onclick="showPage('creatine',this)">🧪 كرياتين</button>
+    <button class="nav-tab" onclick="showPage('supplements',this)">💊 مكملات</button>
   </div>
   <button class="nav-hamburger" onclick="toggleMobileMenu()" id="hamburger">
     <svg width="24" height="24" viewBox="0 0 24 24"><rect y="4" width="24" height="2.5" rx="1"/><rect y="11" width="24" height="2.5" rx="1"/><rect y="18" width="24" height="2.5" rx="1"/></svg>
@@ -581,6 +620,8 @@ nav{
   <button class="nav-mobile-btn" onclick="showPageMobile('streak',this)">🔥 تتبع الانتظام</button>
   <button class="nav-mobile-btn" onclick="showPageMobile('packages',this)">👑 الباقات</button>
   <button class="nav-mobile-btn" onclick="showPageMobile('calories',this)">⚡ حاسبة السعرات</button>
+  <button class="nav-mobile-btn" onclick="showPageMobile('creatine',this)">🧪 حاسبة الكرياتين</button>
+  <button class="nav-mobile-btn" onclick="showPageMobile('supplements',this)">💊 المكملات الغذائية</button>
 </div>
 
 <!-- HOME -->
@@ -589,7 +630,7 @@ nav{
     <div class="hero-grid-bg"></div>
     <div class="hero-inner">
       <div class="hero-text">
-        <div class="hero-badge"><span>⭐</span> TEFA GYM · الوادي الجديد - الداخلة</div>
+        <div class="hero-badge"><span>⭐</span> TEFA GYM · الوادي الجديد-الداخلة</div>
         <div class="hero-title">شكّل<br><span>جسمك</span><br>صح</div>
         <div class="hero-desc">مع كابتن تيفا، مش بس جيم — منظومة كاملة للتحول. تمرين، تغذية، ومتابعة يومية.</div>
         <button class="hero-cta" onclick="showPage('workout', document.querySelectorAll('.nav-tab')[1])">ابدأ رحلتك 🚀</button>
@@ -606,8 +647,58 @@ nav{
     <div class="stat"><div class="stat-num">100%</div><div class="stat-label">نتايج مضمونة</div></div>
     <div class="stat"><div class="stat-num">24/7</div><div class="stat-label">دعم مستمر</div></div>
   </div>
+  <!-- Before/After Section -->
+  <div class="ba-section">
+    <div class="ba-header">
+      <div class="ba-title">💪 نتايج حقيقية</div>
+      <div class="ba-sub">متدربين TEFA GYM — قبل وبعد</div>
+    </div>
+    <div class="ba-grid" id="ba-grid">
+      <!-- Placeholder cards — يتحطوا صور بعدين -->
+      <div class="ba-card">
+        <div class="ba-img-wrap">
+          <div class="ba-placeholder">
+            <div class="ba-placeholder-icon">📸</div>
+            <div class="ba-placeholder-txt">صورة قبل وبعد</div>
+            <div class="ba-placeholder-sub">قريباً</div>
+          </div>
+        </div>
+        <div class="ba-info">
+          <div class="ba-name">متدرب TEFA</div>
+          <div class="ba-duration">مدة التحول: 3 شهور</div>
+        </div>
+      </div>
+      <div class="ba-card">
+        <div class="ba-img-wrap">
+          <div class="ba-placeholder">
+            <div class="ba-placeholder-icon">📸</div>
+            <div class="ba-placeholder-txt">صورة قبل وبعد</div>
+            <div class="ba-placeholder-sub">قريباً</div>
+          </div>
+        </div>
+        <div class="ba-info">
+          <div class="ba-name">متدرب TEFA</div>
+          <div class="ba-duration">مدة التحول: 4 شهور</div>
+        </div>
+      </div>
+      <div class="ba-card">
+        <div class="ba-img-wrap">
+          <div class="ba-placeholder">
+            <div class="ba-placeholder-icon">📸</div>
+            <div class="ba-placeholder-txt">صورة قبل وبعد</div>
+            <div class="ba-placeholder-sub">قريباً</div>
+          </div>
+        </div>
+        <div class="ba-info">
+          <div class="ba-name">متدرب TEFA</div>
+          <div class="ba-duration">مدة التحول: 6 شهور</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="home-contact" id="contact-bar">
-    <a class="contact-btn wa" id="wa-btn" href="#" target="_blank">📱 واتساب</a>
+    <a class="contact-btn wa" id="wa-btn" href="https://wa.me/201228164202" target="_blank">📱 واتساب · +20 12 2816 4202</a>
     <a class="contact-btn fb" id="fb-btn" href="#" target="_blank">📘 فيسبوك</a>
     
   </div>
@@ -616,7 +707,7 @@ nav{
 
 <!-- WORKOUT -->
 <div id="page-workout" class="page">
-  <div class="section-title">جدول pro split</div>
+  <div class="section-title">جدول PRO SPLIT</div>
   <div class="section-sub">Pro Split · 6 أيام تمرين · يومين راحة</div>
   <div class="day-tabs">
     <button class="day-tab active" onclick="showDay('day1',this)">💪 اليوم 1<br><small>بنش+تراي</small></button>
@@ -777,6 +868,9 @@ nav{
     </div>
   </div>
   <div class="packages-note">📞 للاستفسار وتحديد الأسعار — تواصل معنا عبر واتساب أو فيسبوك</div>
+    <div style="margin-top:20px;background:rgba(255,215,0,0.05);border:1px dashed rgba(255,215,0,0.3);border-radius:12px;padding:16px;text-align:center;color:var(--gray);font-size:13px;">
+      🏗️ التفاصيل الكاملة والأسعار قريباً — ابعت رسالة على واتساب للاستفسار
+    </div>
 </div>
 
 <!-- CALORIES -->
@@ -832,6 +926,107 @@ nav{
     </div>
   </div>
 </div>
+<!-- ==================== CREATINE ==================== -->
+<div id="page-creatine" class="page">
+  <div id="creatine-lock" style="display:block;">
+    <div style="max-width:400px;margin:80px auto;padding:0 16px;text-align:center;">
+      <div style="font-size:56px;margin-bottom:16px;">🔒</div>
+      <div style="font-family:'Bebas Neue';font-size:32px;color:var(--gold);letter-spacing:3px;margin-bottom:8px;">صفحة مقفولة</div>
+      <div style="color:var(--gray);font-size:14px;margin-bottom:28px;">هذه الصفحة للكابتن فقط</div>
+      <input type="password" id="creatine-pw" placeholder="••••••" maxlength="20"
+        style="width:100%;padding:14px;background:var(--dark3);border:1px solid #333;border-radius:10px;color:white;text-align:center;font-size:18px;letter-spacing:4px;font-family:'Cairo';margin-bottom:12px;"
+        onkeydown="if(event.key==='Enter')unlockCreatine()">
+      <button onclick="unlockCreatine()"
+        style="width:100%;padding:14px;background:linear-gradient(135deg,var(--gold),var(--gold2));border:none;border-radius:10px;color:#000;font-family:'Cairo';font-size:16px;font-weight:900;cursor:pointer;">
+        دخول 🔑
+      </button>
+      <div id="creatine-err" style="color:#e74c3c;font-size:13px;margin-top:10px;display:none;">❌ كود غلط</div>
+    </div>
+  </div>
+  <div id="creatine-content" style="display:none;padding:28px 16px;max-width:760px;margin:0 auto;">
+    <div class="section-title">🧪 حاسبة الكرياتين</div>
+    <div class="section-sub">احسب جرعتك اليومية من الكرياتين</div>
+    <div class="cal-form">
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label">الوزن (كجم)</label>
+          <input type="number" class="form-input" id="cr-weight" placeholder="80">
+        </div>
+        <div class="form-group">
+          <label class="form-label">هدفك</label>
+          <select class="form-select" id="cr-goal">
+            <option value="maintain">حافظ على العضل</option>
+            <option value="bulk">زيادة حجم</option>
+            <option value="performance">أداء رياضي</option>
+          </select>
+        </div>
+        <div class="form-group cal-full-width">
+          <label class="form-label">مستوى التمرين</label>
+          <select class="form-select" id="cr-level">
+            <option value="beginner">مبتدئ (1-2 سنة)</option>
+            <option value="intermediate" selected>متوسط (2-4 سنوات)</option>
+            <option value="advanced">متقدم (+4 سنوات)</option>
+          </select>
+        </div>
+      </div>
+      <button class="calc-btn" onclick="calcCreatine()">احسب الجرعة 🧪</button>
+    </div>
+    <div id="cr-result" style="display:none;">
+      <div class="main-result" style="margin-bottom:14px;">
+        <div class="main-result-label">الجرعة اليومية الموصى بها</div>
+        <div class="main-result-num" id="cr-dose" style="font-size:72px;">0g</div>
+        <div class="main-result-unit">جرام كرياتين / يوم</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;">
+        <div class="macro-card">
+          <div class="macro-num" id="cr-timing" style="font-size:18px;color:var(--gold);">بعد التمرين</div>
+          <div class="macro-label">أفضل وقت للأخذ</div>
+        </div>
+        <div class="macro-card">
+          <div class="macro-num" id="cr-water" style="font-size:22px;color:#42a5f5;">3-4 لتر</div>
+          <div class="macro-label">ماء يومي مطلوب</div>
+        </div>
+      </div>
+      <div id="cr-loading-phase" style="display:none;" class="macro-card" style="margin-bottom:14px;">
+        <div style="color:var(--gold);font-weight:700;margin-bottom:6px;">⚡ مرحلة التحميل (اختياري)</div>
+        <div style="color:var(--gray);font-size:13px;" id="cr-loading-txt">20g يومياً لمدة 5-7 أيام (4 جرعات × 5g)</div>
+      </div>
+      <div class="main-result" style="margin-top:14px;">
+        <div class="main-result-label" style="font-size:13px;margin-bottom:12px;">💡 نصايح مهمة</div>
+        <div style="text-align:right;">
+          <div style="color:var(--gray);font-size:13px;padding:8px 0;border-bottom:1px solid #1e1e1e;">✅ خد الكرياتين مع الكربوهيدرات أو البروتين لامتصاص أفضل</div>
+          <div style="color:var(--gray);font-size:13px;padding:8px 0;border-bottom:1px solid #1e1e1e;">✅ اشرب مية كتير عشان الكلاوي والعضل</div>
+          <div style="color:var(--gray);font-size:13px;padding:8px 0;border-bottom:1px solid #1e1e1e;">✅ Creatine Monohydrate هو الأفضل والأرخص</div>
+          <div style="color:var(--gray);font-size:13px;padding:8px 0;">✅ تقدر تاخده كل يوم حتى في أيام الراحة</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SUPPLEMENTS ==================== -->
+<div id="page-supplements" class="page">
+  <div style="padding:28px 16px;max-width:900px;margin:0 auto;">
+    <div class="section-title">💊 المكملات الغذائية</div>
+    <div class="section-sub">المكملات المتاحة في TEFA GYM وفوائدها</div>
+    <div style="background:var(--dark2);border:1px solid rgba(255,215,0,0.2);border-radius:14px;padding:24px;text-align:center;margin-top:20px;">
+      <div style="font-size:48px;margin-bottom:16px;">🏗️</div>
+      <div style="font-family:'Bebas Neue';font-size:28px;color:var(--gold);letter-spacing:3px;margin-bottom:8px;">قريباً</div>
+      <div style="color:var(--gray);font-size:15px;line-height:1.8;">
+        هيتضاف قريباً قايمة المكملات الغذائية المتاحة في الجيم<br>
+        مع أسعارها وفوائد كل مكمل
+      </div>
+      <div style="margin-top:20px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+        <div style="background:rgba(255,215,0,0.08);border:1px solid rgba(255,215,0,0.2);border-radius:8px;padding:8px 16px;color:var(--gold);font-size:13px;">🧪 كرياتين</div>
+        <div style="background:rgba(255,215,0,0.08);border:1px solid rgba(255,215,0,0.2);border-radius:8px;padding:8px 16px;color:var(--gold);font-size:13px;">🥛 بروتين</div>
+        <div style="background:rgba(255,215,0,0.08);border:1px solid rgba(255,215,0,0.2);border-radius:8px;padding:8px 16px;color:var(--gold);font-size:13px;">⚡ Pre-Workout</div>
+        <div style="background:rgba(255,215,0,0.08);border:1px solid rgba(255,215,0,0.2);border-radius:8px;padding:8px 16px;color:var(--gold);font-size:13px;">💊 BCAA</div>
+        <div style="background:rgba(255,215,0,0.08);border:1px solid rgba(255,215,0,0.2);border-radius:8px;padding:8px 16px;color:var(--gold);font-size:13px;">🔥 حارق دهون</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 </div><!-- end app -->
 
 <script>
@@ -841,7 +1036,8 @@ function toggleMobileMenu(){
   m.classList.toggle("open");
 }
 function showPageMobile(name,btn){
-  showPage(name,document.querySelectorAll(".nav-tab")[["home","workout","log","streak","packages","calories"].indexOf(name)]);
+  const pages=["home","workout","log","streak","packages","calories","creatine","supplements"];
+  showPage(name,document.querySelectorAll(".nav-tab")[pages.indexOf(name)]);
   document.querySelectorAll(".nav-mobile-btn").forEach(b=>b.classList.remove("active"));
   btn.classList.add("active");
   document.getElementById("mobile-menu").classList.remove("open");
@@ -894,11 +1090,9 @@ function showDay(day,tab){
 
 // ===== CONTACT =====
 function loadContact(){
-  const wa=localStorage.getItem("tefa_wa")||"";
-  const fb=localStorage.getItem("tefa_fb")||"";
-  document.getElementById("wa-input").value=wa;
-  document.getElementById("fb-input").value=fb;
-  if(wa) document.getElementById("wa-btn").href="https://wa.me/"+wa.replace(/\D/g,"");
+  const wa=localStorage.getItem("tefa_wa")||"201228164202";
+  const fb=localStorage.getItem("tefa_fb")||"https://www.facebook.com/profile.php?id=100069961030755";
+  document.getElementById("wa-btn").href="https://wa.me/"+wa.replace(/\D/g,"");
   if(fb) document.getElementById("fb-btn").href=fb;
 }
 function saveContact(){
@@ -912,18 +1106,54 @@ function saveContact(){
 }
 
 function contactWA(){
-  const wa=localStorage.getItem("tefa_wa")||"";
-  if(wa) window.open("https://wa.me/"+wa.replace(/\D/g,""),"_blank");
-  else alert("يرجى إضافة رقم واتساب أولاً من الصفحة الرئيسية");
+  const wa=localStorage.getItem("tefa_wa")||"201228164202";
+  window.open("https://wa.me/"+wa.replace(/\D/g,""),"_blank");
 }
 
 // ===== WORKOUT =====
 const VIDEO_LINKS = {
-  day1: { 0:"", 1:"", 2:"", 3:"", 4:"", 5:"", 6:"" },
-  day2: { 0:"", 1:"", 2:"", 3:"", 4:"", 5:"", 6:"" },
-  day4: { 0:"", 1:"", 2:"", 3:"", 4:"" },
-  day5: { 0:"", 1:"", 2:"", 3:"", 4:"", 5:"" },
-  day6: { 0:"", 1:"", 2:"", 3:"", 4:"" },
+  day1: {
+    0:"https://youtube.com/shorts/XjrsqShr-Ic?si=g46ICBN6MqFYNXNW",
+    1:"https://youtube.com/shorts/hkU6fSHcslw?si=0Vh1g0IeIkOUrxPU",
+    2:"https://youtube.com/shorts/ZLv-K-zSrC0?si=SDhRPMKnwxfQgWYM",
+    3:"https://youtube.com/shorts/ogj1igwlc9I?si=UglervAFkGx2kXjA",
+    4:"https://youtube.com/shorts/IZS2RMmqt3E?si=VDxqNtq0bELndcRB",
+    5:"https://youtube.com/shorts/1FjkhpZsaxc?si=YliN9GmPSMfovCrc",
+    6:"https://youtube.com/shorts/b_r_LW4HEcM?si=N7dOOMIVe4lc-gCq"
+  },
+  day2: {
+    0:"https://youtube.com/shorts/yHqqGd0tXcw?si=mu1gxL7nI0YaDkGr",
+    1:"https://youtube.com/shorts/51ql2-2kLfA?si=m1t28GspQgzmWOV_",
+    2:"https://youtube.com/shorts/0QN8jx2nEQc?si=B0dx2uYvrzq5uGfB",
+    3:"https://youtube.com/shorts/FVyVvApcyZY?si=bxaoG9S10SKVscrm",
+    4:"https://youtube.com/shorts/qD1WZ5pSuvk?si=lEeA_vWxzzGWJBQn",
+    5:"https://youtube.com/shorts/8rXdAAwm8Rs?si=dUEkulNxFlFajKLw",
+    6:"https://youtube.com/shorts/CrbTqNOlFgE?si=zFLMD6mm5rLwCCF-",
+    7:"https://youtube.com/shorts/MKWBV29S6c0?si=D0bPIuiH2UXwJf8o"
+  },
+  day4: {
+    0:"https://youtube.com/shorts/zoN5EH50Dro?si=LqdH17AljPRPKpLz",
+    1:"https://youtube.com/shorts/6v4nrRVySj0?si=r9-VjtMKmn5Hxz3S",
+    2:"https://youtube.com/shorts/Kl3LEzQ5Zqs?si=A2O5G3MCGAc6nzQ7",
+    3:"https://youtube.com/shorts/Kl3LEzQ5Zqs?si=A2O5G3MCGAc6nzQ7",
+    4:"https://youtube.com/shorts/H5UxZFl0lgk?si=sg0Q56jP2j4g9U0N",
+    5:"https://youtube.com/shorts/rFsSeClGnNA?si=2GiSL6lEkjCm9g6w"
+  },
+  day5: {
+    0:"https://youtube.com/shorts/54x2WF1_Suc?si=tFNrtEv5FXGdKpwg",
+    1:"https://youtube.com/shorts/WyAVZn6_PIY?si=a9y-ZVNybB5P86GG",
+    2:"https://youtube.com/shorts/CrbTqNOlFgE?si=hIsAtjM3DpOxJmfC",
+    3:"https://youtube.com/shorts/u36jNfqh8_U?si=mxc9bQBz4UdzhzlH",
+    4:"https://youtube.com/shorts/NTk0Igxqcsk?si=e1PA8VKoJm0SudW8",
+    5:"https://youtube.com/shorts/-dOhi8LBJBk?si=2R5-wSl2CYVUiVeP"
+  },
+  day6: {
+    0:"https://youtube.com/shorts/EotSw18oR9w?si=-81VWWTcOMd1sjpT",
+    1:"https://youtube.com/shorts/mJilHWIBWO8?si=dpDE-XkAwAa_fibc",
+    2:"https://youtube.com/shorts/uM86QE59Tgc?si=fEqmC4CDsE8g3zrP",
+    3:"https://youtube.com/shorts/FRy58-v0YII?si=mqdIT73Qi0s8AMER",
+    4:"https://youtube.com/shorts/5o9V-I3bII0?si=IfnF2q-xaRzRnvOL"
+  },
 };
 
 const WORKOUT_PLAN = {
@@ -941,11 +1171,13 @@ const WORKOUT_PLAN = {
     {name:"سحب عالي على الجهاز (Lat Pulldown Machine)",tag:"ظهر"},
     {name:"ظرافة (Cable Triceps Pushdown)",tag:"ظهر"},
     {name:"جهاز دوريان واسع (Wide Grip Pulldown)",tag:"ظهر"},
+    {name:"سحب أرضي ضيق (Cable Row From Tips)",tag:"ظهر"},
     {name:"قطنية (Hyperextension)",tag:"ظهر"},
     {name:"باي على الكيبل بالمسطرة (Cable Bar Curl)",tag:"باي"},
     {name:"باي تبادل دامبلز (Alternating Dumbbell Biceps Curl)",tag:"باي"},
   ],
   day4:[
+    {name:"امامي بار واقف (Standing Barbell Front Raise)",tag:"كتف"},
     {name:"رفرفة امامية دامبلز (Dumbbell Front Raise)",tag:"كتف"},
     {name:"تجاميع على جهاز الكتف (Machine Shoulder Shrugs)",tag:"كتف"},
     {name:"رفرفة جانبية دامبلز (Dumbbell Lateral Raise)",tag:"كتف"},
@@ -961,7 +1193,7 @@ const WORKOUT_PLAN = {
     {name:"تراي فرنساوي (Dumbbell French Press)",tag:"ذراع"},
   ],
   day6:[
-    {name:"هاك اسكواد (Hack Squat Machine)",tag:"رجل"},
+    {name:"دفع على الجهاز (LEG PRESS)",tag:"رجل"},
     {name:"طعن دامبلز (Incline Dumbbell Concentration Curl)",tag:"رجل"},
     {name:"رفرفة امامية (Standing Front Leg Raise)",tag:"رجل"},
     {name:"خلفيات رجل على الجهاز (Leg Curl Machine)",tag:"رجل"},
@@ -1215,6 +1447,41 @@ function renderStreak(){
   }
 }
 
+// ===== CREATINE =====
+const CREATINE_PASS = "tefa_cr_2024";
+function unlockCreatine(){
+  const pw=document.getElementById("creatine-pw").value;
+  if(pw===CREATINE_PASS){
+    document.getElementById("creatine-lock").style.display="none";
+    document.getElementById("creatine-content").style.display="block";
+  } else {
+    const err=document.getElementById("creatine-err");
+    err.style.display="block";
+    err.style.animation="none"; void err.offsetWidth; err.style.animation="shake 0.4s ease";
+    document.getElementById("creatine-pw").value="";
+  }
+}
+document.addEventListener("keydown",function(e){
+  if(document.getElementById("page-creatine").classList.contains("active")){
+    const input=document.getElementById("creatine-pw");
+    if(input && e.key==="Enter") unlockCreatine();
+  }
+});
+function calcCreatine(){
+  const weight=+document.getElementById("cr-weight").value;
+  const goal=document.getElementById("cr-goal").value;
+  const level=document.getElementById("cr-level").value;
+  if(!weight){alert("ادخل وزنك!");return;}
+  let dose=0.03*weight; // 0.03g per kg baseline
+  if(goal==="bulk") dose*=1.1;
+  if(goal==="performance") dose*=1.05;
+  if(level==="advanced") dose*=1.1;
+  dose=Math.min(Math.max(Math.round(dose*10)/10,3),5);
+  document.getElementById("cr-dose").textContent=dose+"g";
+  const timing=goal==="performance"?"قبل التمرين بـ 30 دقيقة":"بعد التمرين مباشرة";
+  document.getElementById("cr-timing").textContent=timing;
+  document.getElementById("cr-result").style.display="block";
+}
 // ===== CALORIES =====
 function calcCalories(){
   const gender=document.getElementById("c-gender").value;
