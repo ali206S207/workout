@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tefa-gym-v2';
+const CACHE_NAME = 'tefa-gym-v3';
 const ASSETS = [
   './',
   './index.html',
